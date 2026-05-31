@@ -27,8 +27,8 @@ All steps are fully reproducible and documented with clear comments suitable for
 └── README.md                      # This file
 ```
 
-> **Note**: Running the R Markdown file will generate the two CSV outputs and produce an HTML report with embedded plots.
-
+> **Note**: Running the R Markdown file will generate the two CSV outputs and produce an PDF report with embedded plots.
+ 
 ---
 
 ### Requirements
@@ -53,7 +53,7 @@ install.packages(c("dplyr", "lubridate", "ggplot2", "tidyr"))
 1. Clone this repository or download the files.
 2. Place `Exam 2 Input File.csv` and `Exam_2_Assessment_Lab_2.rmd` in the same directory.
 3. Open `Exam_2_Assessment_Lab_2.rmd` in RStudio.
-4. Click **Knit** to generate the HTML report and execute all code chunks.
+4. Click **Knit** to generate the PDF report and execute all code chunks.
 5. The CSV files (`irrigation_demand.csv` and `yield.csv`) will be written to the working directory.
 
 ---
