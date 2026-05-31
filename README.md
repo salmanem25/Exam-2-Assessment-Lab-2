@@ -1,6 +1,6 @@
-# Econ 396 Exam 2/Assessment Lab 2 – Agricultural Data Analysis
+## Econ 396 Exam 2/Assessment Lab 2 – Agricultural Data Analysis
 
-## Overview
+### Overview
 
 This repository contains the complete solution for **Exam 2 / Lab Assessment 2** of Econ 396 (Spring 2026). The analysis is performed in R Markdown and addresses six key data manipulation tasks using agricultural yield and irrigation demand data for corn grain and winter wheat across multiple counties in Washington State (Okanogan, Walla Walla, Yakima).
 
@@ -17,7 +17,7 @@ All steps are fully reproducible and documented with clear comments suitable for
 
 ---
 
-## File Structure
+### File Structure
 
 ```
 ├── Exam 2 Input File.csv          # Raw input data (provided)
@@ -31,7 +31,7 @@ All steps are fully reproducible and documented with clear comments suitable for
 
 ---
 
-## Requirements
+### Requirements
 
 To run this analysis, you need **R** (version ≥ 4.0) and the following R packages:
 
@@ -48,7 +48,7 @@ install.packages(c("dplyr", "lubridate", "ggplot2", "tidyr"))
 
 ---
 
-## How to Run
+### How to Run
 
 1. Clone this repository or download the files.
 2. Place `Exam 2 Input File.csv` and `Exam_2_Assessment_Lab_2.rmd` in the same directory.
@@ -58,24 +58,24 @@ install.packages(c("dplyr", "lubridate", "ggplot2", "tidyr"))
 
 ---
 
-## Step‑by‑Step Summary of the Analysis
+### Step‑by‑Step Summary of the Analysis
 
-### 1. Add a `year` column
+#### 1. Add a `year` column
 The original date column is in the format `"YYYY-MM-DD(DOY)"`.  
 The script extracts the date part and uses `lubridate::ymd()` and `year()` to create a clean `year` integer column.
 
-### 2. Remove outliers
+#### 2. Remove outliers
 For each combination of `county_name` and `crop`, the 90th percentile of `irrigation_demand` is calculated. Any row with demand **above** this threshold is removed.  
 This filters out unusually high irrigation demands that could distort subsequent analyses.
 
-### 3. Create two separate CSV files
+#### 3. Create two separate CSV files
 From the filtered dataset, two files are saved:
 - `irrigation_demand.csv` – contains `year`, `county_name`, `crop`, `lat_lon`, and `irrigation_demand`.
 - `yield.csv` – contains `year`, `county_name`, `crop`, `lat_lon`, and `yield`.
 
 Both files retain the same key columns for later merging.
 
-### 4. Perform joins
+#### 4. Perform joins
 The two CSV files are read back into R, and three types of joins are applied on the four key columns (`year`, `county_name`, `crop`, `lat_lon`):
 - **Full join** – all rows from both tables.
 - **Left join** – all rows from `irrigation_demand`, matched rows from `yield`.
@@ -83,14 +83,14 @@ The two CSV files are read back into R, and three types of joins are applied on 
 
 Because both files originate from the same filtered dataset, every row has a perfect match. Consequently, all three joins produce the **same number of rows** – no rows are lost or added.
 
-### 5. Identify missing rows and impute
+#### 5. Identify missing rows and impute
 The “full join” result contains only the filtered (non‑outlier) data. To assess completeness, the script compares it with the **original** input data.  
 Rows present in the original but missing from the full join are exactly the outliers removed in Step 2. These are **explicit missing data** (we know why they are missing).
 
 For each missing row, the original `irrigation_demand` (the outlier) is replaced with the **average irrigation demand** of its county‑crop group, calculated from the filtered (non‑outlier) data.  
 All other columns (`year`, `county_name`, `crop`, `lat_lon`, `yield`) are retained. A complete dataset is created by binding the imputed rows to the filtered data.
 
-### 6. Comparison data frame and visualisation
+#### 6. Comparison data frame and visualisation
 A dedicated data frame (`missing_comparison`) is built that contains only the missing rows, showing:
 - `irrigation_demand_original` – the actual outlier value.
 - `irrigation_demand_filled` – the county‑crop average used for imputation.
@@ -100,7 +100,7 @@ The plot clearly shows that the original demands are substantially higher than t
 
 ---
 
-## Key Insights from the Visualisation
+### Key Insights from the Visualisation
 
 - Outliers (original irrigation demands) are consistently well above the county‑crop average.
 - Imputed values are moderate and lie within the typical range of the non‑outlier data.
@@ -108,7 +108,7 @@ The plot clearly shows that the original demands are substantially higher than t
 
 ---
 
-## Outputs
+### Outputs
 
 | File | Description |
 |------|-------------|
@@ -120,14 +120,14 @@ The plot clearly shows that the original demands are substantially higher than t
 
 ---
 
-## Authors
+### Authors
 
 - **Author**: Salman Rashid, Econ 396 – Spring 2026
 - **Purpose**: Educational assignment for data manipulation and visualisation in R.
 
 ---
 
-## Acknowledgements
+### Acknowledgements
 
 Data provided as part of the course material. The analysis follows the instructions of the Exam‑Lab Assessment 2 strictly, with an emphasis on clarity for learners with minimal R experience.
 
