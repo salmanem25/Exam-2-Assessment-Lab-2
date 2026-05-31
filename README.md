@@ -21,7 +21,7 @@ All steps are fully reproducible and documented with clear comments suitable for
 
 ```
 ├── Exam 2 Input File.csv          # Raw input data (provided)
-├── Exam_2_Assessment_Lab_2        # R Markdown script (the solution)
+├── Exam_2_Assessment_Lab_2.rmd    # R Markdown script (the solution)
 ├── irrigation_demand.csv          # Output: filtered irrigation demand data
 ├── yield.csv                      # Output: filtered yield data
 └── README.md                      # This file
