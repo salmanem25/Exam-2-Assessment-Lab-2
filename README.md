@@ -1,4 +1,3 @@
-```markdown
 # Econ 396 Exam 2/Assessment Lab 2 – Agricultural Data Analysis
 
 ## Overview
@@ -133,4 +132,3 @@ The plot clearly shows that the original demands are substantially higher than t
 Data provided as part of the course material. The analysis follows the instructions of the Exam‑Lab Assessment 2 strictly, with an emphasis on clarity for learners with minimal R experience.
 
 For any questions or issues, please open an issue in this repository.
-```
